@@ -8,6 +8,96 @@
     <title>CreatorKit — Free Tools for Content Creators</title>
 
     <link rel="stylesheet" href="style.css">
+
+<style>
+/* ================= PAYMENT MODAL ================= */
+
+.payment-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.65);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.payment-modal.show {
+    display: flex;
+}
+
+.payment-box {
+    position: relative;
+    width: min(100%, 480px);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.payment-box > button:first-child {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.payment-box > button:first-child:hover {
+    background: #f1f1f1;
+}
+
+.payment-price {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 18px 0;
+}
+
+.payment-step {
+    margin: 18px 0;
+    padding: 16px;
+    border-radius: 14px;
+    background: #f7f7f7;
+}
+
+.payment-step p {
+    margin: 8px 0;
+}
+
+.payment-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    background: #111;
+    color: #fff;
+}
+
+.payment-button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+    .payment-box {
+        padding: 24px 18px;
+        border-radius: 16px;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -515,7 +605,7 @@ function openPaymentModal() {
 
 }
 
-function closePaymentModal() {
+function closePaymentModal(event) {
 
     document
         .getElementById("paymentModal")
@@ -897,9 +987,9 @@ function closePaymentModal() {
     </script>
 <!-- PAYMENT MODAL -->
 
-<div id="paymentModal" class="payment-modal">
+<div id="paymentModal" class="payment-modal" onclick="closePaymentModal(event)">
 
-    <div class="payment-box">
+    <div class="payment-box" onclick="event.stopPropagation()">
 
  <button onclick="closePaymentModal()">✕</button>
 
