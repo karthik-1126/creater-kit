@@ -410,7 +410,7 @@
 
 
                 <button onclick="openPaymentModal()">
-                    Get CreatorKit Pro
+                    Get CreatorKit Pro — ₹299
                 </button>
 
 
@@ -439,7 +439,7 @@
             Unlock this tool with CreatorKit Pro.
         </p>
 
-        <button onclick="showComingSoon()">
+        <button onclick="openPaymentModal()">
             Unlock Pro — ₹299
         </button>
 
@@ -507,13 +507,21 @@
 
         /* ================= GENERAL ================= */
 
-        function openPaymentModal() {
+function openPaymentModal() {
 
-            alert(
-                "CreatorKit Pro payments are coming soon!"
-            );
+    document
+        .getElementById("paymentModal")
+        .classList.add("show");
 
-        }
+}
+
+function closePaymentModal() {
+
+    document
+        .getElementById("paymentModal")
+        .classList.remove("show");
+
+}
 
 
 
@@ -887,7 +895,83 @@
         }
 
     </script>
+<!-- PAYMENT MODAL -->
 
+<div id="paymentModal" class="payment-modal">
+
+    <div class="payment-box">
+
+ <button onclick="closePaymentModal()">✕</button>
+
+        <span class="pro-badge">
+            CREATORKIT PRO
+        </span>
+
+        <h2>
+            Get CreatorKit Pro
+        </h2>
+
+        <p>
+            Complete toolkit for content creators.
+        </p>
+
+        <div class="payment-price">
+            ₹299
+        </div>
+
+        <div class="payment-step">
+
+            <strong>1. Pay ₹299 with UPI</strong>
+
+            <p>
+                UPI ID:
+                <strong>9391350768@fam</strong>
+            </p>
+
+            <a
+                class="payment-button"
+                href="upi://pay?pa=9391350768@fam&pn=CreatorKit&am=299&cu=INR"
+            >
+                Pay ₹299 with UPI
+            </a>
+
+        </div>
+
+        <div class="payment-step">
+
+            <strong>2. Save your transaction ID</strong>
+
+            <p>
+                After paying, copy the UPI transaction/reference ID.
+            </p>
+
+        </div>
+
+        <div class="payment-step">
+
+            <strong>3. Send your payment reference</strong>
+
+            <p>
+                Email your transaction ID so the CreatorKit Pro ZIP
+                can be delivered after payment verification.
+            </p>
+
+            <a
+                class="payment-button"
+                href="mailto:YOUR-EMAIL-HERE?subject=CreatorKit%20Pro%20Payment"
+            >
+                Send Payment Reference
+            </a>
+
+        </div>
+
+        <p class="small-text">
+            One-time payment • ₹299 • Digital product
+        </p>
+
+    </div>
+
+</div>
 </body>
 
 </html>
